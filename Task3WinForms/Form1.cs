@@ -20,6 +20,7 @@ namespace Task3WinForms
         private Line _l2 = new Line(new List<PointF>(), Color.DarkRed, 2);
         private Line _lineToUse;
         private bool _newLine = false;
+        private bool _closeLine = false;
         private readonly Drawer _drawer;
 
         public Form1()
@@ -38,8 +39,8 @@ namespace Task3WinForms
         {
             try
             {
-                _l1.NormalizeWithNewLine(_l2);
-                _drawer.MoveObject(_l1, _l2);
+               _l1.NormalizeWithNewLine(_l2);
+               _drawer.MoveObject(_l1, _l2, _closeLine);   
             }
             catch (Exception ex)
             {
@@ -82,6 +83,13 @@ namespace Task3WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
             _drawer.Clear();
+        }
+
+        private void CloseLine_CheckedChanged(object sender, EventArgs e)
+        {
+            _closeLine = CloseLine.Checked;
+            _l2.Points.Add(_l2.Points[0]);
+            _drawer.Draw(_l2);
         }
     }
 }

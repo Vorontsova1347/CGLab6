@@ -32,6 +32,7 @@
             this.Submit = new System.Windows.Forms.Button();
             this.Field = new System.Windows.Forms.PictureBox();
             this.Clear = new System.Windows.Forms.Button();
+            this.CloseLine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(76, 10);
+            this.Submit.Location = new System.Drawing.Point(128, 10);
             this.Submit.Margin = new System.Windows.Forms.Padding(2);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(56, 46);
@@ -71,7 +72,7 @@
             // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(136, 8);
+            this.Clear.Location = new System.Drawing.Point(199, 10);
             this.Clear.Margin = new System.Windows.Forms.Padding(2);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(56, 48);
@@ -80,11 +81,23 @@
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // CloseLine
+            // 
+            this.CloseLine.AutoSize = true;
+            this.CloseLine.Location = new System.Drawing.Point(9, 33);
+            this.CloseLine.Name = "CloseLine";
+            this.CloseLine.Size = new System.Drawing.Size(89, 17);
+            this.CloseLine.TabIndex = 4;
+            this.CloseLine.Text = "Сlose the line";
+            this.CloseLine.UseVisualStyleBackColor = true;
+            this.CloseLine.CheckedChanged += new System.EventHandler(this.CloseLine_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CloseLine);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Field);
             this.Controls.Add(this.Submit);
@@ -104,6 +117,7 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.PictureBox Field;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.CheckBox CloseLine;
     }
 }
 

@@ -37,35 +37,36 @@ namespace MyDrawing
             _g.DrawRectangle(new Pen(color), location.X, location.Y, 2, 2); 
         }
 
-        public void MoveObject(UiElement l1, UiElement l2)
+        public void MoveObject(UiElement l1, UiElement l2, bool flag)
         {
             if (l1.Points.Count == l2.Points.Count)
             {
-                Timer T = new Timer(1);
+                Timer T = new Timer(20);
                 var delta = 0.1f;
 
                 T.Elapsed += (sender, args) =>
                 {
                     T.Enabled = false;
-                    for (int i = 0; i < l1.Points.Count; i++)
-                    {
+                 
+                        for (int i = 0; i < l1.Points.Count; i++)
+                        {
                         var point = l1.Points[i];
                         point.X += (l2.Points[i].X - l1.Points[i].X) * delta;
                         point.Y += (l2.Points[i].Y - l1.Points[i].Y) * delta;
 
                         if (point.X > delta && point.Y > delta)
                             l1.Points[i] = point;
-                    }
+                        }
+                   
+                        _g.Clear(Color.White);
+                        Draw(l1);
+                        T.Enabled = true;
 
-                    _g.Clear(Color.White);
-                    Draw(l1);
-                    T.Enabled = true;
-
-                    if (Math.Abs(l2.Points[0].X - l1.Points[0].X) < delta)
-                    {
-                        T.Stop();
-                    }
-
+                        if (Math.Abs(l2.Points[0].X - l1.Points[0].X) < delta)
+                        {
+                            T.Stop();
+                        }
+            
                 };
                 T.Start();
             }
